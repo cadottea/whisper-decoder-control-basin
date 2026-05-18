@@ -8,7 +8,7 @@ The main public result is not a single lucky parameter setting. The important fi
 
 In plain terms: this experiment found a controllable low-dimensional decoder surface inside Whisper's scoring logic.
 
-For a hiring-facing technical summary, see [`docs/asr_engineering_brief.md`](docs/asr_engineering_brief.md).
+For a concise ASR engineering summary, see [`docs/asr_engineering_brief.md`](docs/asr_engineering_brief.md).
 
 ![Decoder control error reduction](figures/decoder_control_error_reduction.png)
 
@@ -112,7 +112,7 @@ The results should be read as evidence for controllable decoder geometry, not as
 | `data/medium_dual_manifest_summary.csv` | Medium-model transfer sweep summary. |
 | `data/medium_specific_hard_summary.csv` | Medium-model medium-specific hard-manifest sweep summary. |
 | `data/README.md` | Column guide for the public result CSV files. |
-| `docs/asr_engineering_brief.md` | Hiring-facing ASR engineering brief summarizing the source patch, evaluation, limits, and production next steps. |
+| `docs/asr_engineering_brief.md` | ASR engineering brief summarizing the source patch, evaluation, limits, and production next steps. |
 | `figures/source_level_basin_public_map.png` | Basin map showing where source-level decoder-control regions improve, fail, or were not tested. |
 | `notes/upstream_source.md` | Upstream `whisper.cpp` source reference and local commit metadata. |
 | `patches/probe3_whisper_sequence_score.patch` | Clean public patch showing the source-level `whisper_sequence_score` scoring intervention. |
