@@ -8,6 +8,8 @@ The main public result is not a single lucky parameter setting. The important fi
 
 In plain terms: this experiment found a controllable low-dimensional decoder surface inside Whisper's scoring logic.
 
+For a hiring-facing technical summary, see [`docs/asr_engineering_brief.md`](docs/asr_engineering_brief.md).
+
 ![Decoder control error reduction](figures/decoder_control_error_reduction.png)
 
 ## What was modified
@@ -19,6 +21,22 @@ The public control surface used three deterministic axes: score-gap, entropy, an
 This makes the experiment a source-level decoder-control test, not prompt engineering, wrapper tuning, retraining, or post-processing.
 
 The source-level change is included as a public patch in `patches/probe3_whisper_sequence_score.patch`.
+
+## Patch behavior
+
+The public source patch is intentionally small and inert by default.
+
+The patch activates only when:
+
+`PAPEREQ_WHISPER_PROBE=3`
+
+The three control weights all default to `0.0`:
+
+- `PAPEREQ_WHISPER_WIGGLE_GAP`
+- `PAPEREQ_WHISPER_WIGGLE_ENTROPY`
+- `PAPEREQ_WHISPER_WIGGLE_LEN`
+
+With all weights unset or set to `0.0`, the added equation collapses back to the original `sequence.score`, preserving baseline Whisper behavior.
 
 ## Summary
 
@@ -58,6 +76,14 @@ Green regions below are tied-best basin cells, blue regions still improve WER, w
 
 ![Source-level decoder-control basin map](figures/source_level_basin_public_map.png)
 
+## How to read the basin map
+
+Each row in the basin map is a model / hard-manifest surface.
+
+The map collapses over `w_gap` because that axis was mostly inactive in these public sweeps. The visible control surface is therefore shown over `w_entropy × w_len`.
+
+Green marks tied-best observed regions, blue still improves WER, white is neutral, red worsens WER, and gray was not tested.
+
 ## Interpretation
 
 The results suggest that Whisper decoding has controllable local structure. Small deterministic changes to decoder scoring can move outputs into lower-WER regions without retraining the model.
@@ -68,6 +94,14 @@ The important public claim is limited:
 
 This is not a claim that the method is universally optimal, not a replacement for full ASR benchmarking, and not a claim that every dataset or model size improves.
 
+## What this does not prove
+
+This repository does not claim universal ASR improvement, broad benchmark superiority, or a production-ready decoding rule.
+
+The limited public claim is that a source-level sequence-scoring surface inside `whisper.cpp` exposed stable local improvement regions on the tested manifests and model sizes.
+
+The results should be read as evidence for controllable decoder geometry, not as a complete replacement for large-scale ASR evaluation.
+
 ## Files
 
 | File | Description |
@@ -77,6 +111,8 @@ This is not a claim that the method is universally optimal, not a replacement fo
 | `data/small_dual_manifest_summary.csv` | Small-model parameter-basin sweep summary. |
 | `data/medium_dual_manifest_summary.csv` | Medium-model transfer sweep summary. |
 | `data/medium_specific_hard_summary.csv` | Medium-model medium-specific hard-manifest sweep summary. |
+| `data/README.md` | Column guide for the public result CSV files. |
+| `docs/asr_engineering_brief.md` | Hiring-facing ASR engineering brief summarizing the source patch, evaluation, limits, and production next steps. |
 | `figures/source_level_basin_public_map.png` | Basin map showing where source-level decoder-control regions improve, fail, or were not tested. |
 | `notes/upstream_source.md` | Upstream `whisper.cpp` source reference and local commit metadata. |
 | `patches/probe3_whisper_sequence_score.patch` | Clean public patch showing the source-level `whisper_sequence_score` scoring intervention. |
