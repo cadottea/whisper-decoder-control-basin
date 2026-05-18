@@ -43,8 +43,17 @@ The repository intentionally includes only aggregate public outputs. It does not
 | parameter basin | small | tiny-original hard manifest | 28 | 25 | -3 | 10.71% |
 | parameter basin | medium | small-specific hard manifest | 17 | 14 | -3 | 17.65% |
 | parameter basin | medium | tiny-original hard manifest | 10 | 10 | 0 | 0.00% |
+| parameter basin | medium | medium-specific hard manifest | 42 | 36 | -6 | 14.29% |
 
-The medium run on the tiny-original hard manifest did not improve WER, but it also did not regress at the selected basin point. The more informative result is the hard-subset medium transfer, where errors dropped from 17 to 14 with near-constant runtime.
+The medium run on the tiny-original hard manifest did not improve WER, but it also did not regress at the selected basin point. Medium improved on two more informative hard subsets: errors dropped from 17 to 14 on the small-specific transfer manifest and from 42 to 36 on the medium-specific hard manifest.
+
+## Basin map
+
+The source-level control surface is not a single isolated setting. Collapsing over the mostly inactive `w_gap` axis exposes a lower-dimensional `w_entropy × w_len` basin.
+
+Green regions below are tied-best basin cells, blue regions still improve WER, white regions are neutral, red regions worsen WER, and gray regions were not tested.
+
+![Source-level decoder-control basin map](figures/source_level_basin_public_map.png)
 
 ## Interpretation
 
@@ -64,6 +73,7 @@ This is not a claim that the method is universally optimal, not a replacement fo
 | `data/heldout_selector_summary.csv` | Held-out selector summary for tiny/base experiments. |
 | `data/small_dual_manifest_summary.csv` | Small-model parameter-basin sweep summary. |
 | `data/medium_dual_manifest_summary.csv` | Medium-model transfer sweep summary. |
+| `data/medium_specific_hard_summary.csv` | Medium-model medium-specific hard-manifest sweep summary. |
 | `notes/upstream_source.md` | Upstream `whisper.cpp` source reference and local commit metadata. |
 
 ## Upstream source

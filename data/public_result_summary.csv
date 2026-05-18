@@ -7,3 +7,4 @@ parameter_basin,small,small_specific_hard_manifest,48,42,-6,0.125,0.093203883495
 parameter_basin,small,tiny_original_hard_manifest,28,25,-3,0.1071428571428571,0.0500894454382826,0.0447227191413237,61.813570737838745,59.50362753868103,Best public basin row: probe3_wg-1.0_we-0.8_wl0.3
 parameter_basin,medium,small_specific_hard_manifest,17,14,-3,0.1764705882352941,0.0574324324324324,0.0472972972972973,93.1483781337738,90.82684659957886,Best public basin row: probe3_wg-0.8_we-0.2_wl1.2
 parameter_basin,medium,tiny_original_hard_manifest,10,10,0,0.0,0.0333333333333333,0.0333333333333333,103.57756304740906,102.03096055984496,Best public basin row: probe3_wg-1.2_we-0.8_wl0.8
+parameter_basin,medium,medium_specific_hard_manifest,42,36,-6,0.1428571428571428,0.0777777777777777,0.0666666666666666,264.464684009552,248.41043281555176,Best public basin row: probe3_wg-0.8_we0.0_wl0.3
