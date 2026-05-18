@@ -1,0 +1,62 @@
+--- a/src/whisper.cpp
++++ b/src/whisper.cpp
+@@ -5318,6 +5318,59 @@
+ 
+         sequence.entropy = entropy;
+     }
++
++    // Experimental decoder-control scoring surface.
++    //
++    // Original behavior is preserved when all weights are 0.0.
++    //
++    // score_new =
++    //   score_base
++    //   + w_gap     * (avg_logprobs - score_base)
++    //   + w_entropy * entropy
++    //   + w_len     * log(1 + result_len)
++    {
++        const char * probe_env = std::getenv("PAPEREQ_WHISPER_PROBE");
++        const bool probe3_enabled = probe_env && std::atoi(probe_env) == 3;
++
++        if (probe3_enabled) {
++            const char * gap_env = std::getenv("PAPEREQ_WHISPER_WIGGLE_GAP");
++            const char * entropy_env = std::getenv("PAPEREQ_WHISPER_WIGGLE_ENTROPY");
++            const char * len_env = std::getenv("PAPEREQ_WHISPER_WIGGLE_LEN");
++
++            const double w_gap = gap_env ? std::atof(gap_env) : 0.0;
++            const double w_entropy = entropy_env ? std::atof(entropy_env) : 0.0;
++            const double w_len = len_env ? std::atof(len_env) : 0.0;
++
++            const double score_base = sequence.score;
++            const double r_gap = sequence.avg_logprobs - score_base;
++            const double r_entropy = sequence.entropy;
++            const double r_len = log(1.0 + (double) sequence.result_len);
++
++            const double score_new =
++                score_base
++                + w_gap     * r_gap
++                + w_entropy * r_entropy
++                + w_len     * r_len;
++
++            WHISPER_LOG_INFO(
++                "PAPEREQ_PROBE3_BEAM_SCORE result_len=%d sum_logprobs=%.12f avg_logprobs=%.12f score_base=%.12f entropy=%.12f r_gap=%.12f r_entropy=%.12f r_len=%.12f w_gap=%.12f w_entropy=%.12f w_len=%.12f score_new=%.12f\n",
++                sequence.result_len,
++                sequence.sum_logprobs,
++                sequence.avg_logprobs,
++                score_base,
++                sequence.entropy,
++                r_gap,
++                r_entropy,
++                r_len,
++                w_gap,
++                w_entropy,
++                w_len,
++                score_new
++            );
++
++            sequence.score = score_new;
++        }
++    }
+ }
+ 
+ int whisper_full_with_state(

@@ -18,6 +18,8 @@ The public control surface used three deterministic axes: score-gap, entropy, an
 
 This makes the experiment a source-level decoder-control test, not prompt engineering, wrapper tuning, retraining, or post-processing.
 
+The source-level change is included as a public patch in `patches/probe3_whisper_sequence_score.patch`.
+
 ## Summary
 
 Experiments were run with a local sandbox derived from `whisper.cpp`.
@@ -77,6 +79,8 @@ This is not a claim that the method is universally optimal, not a replacement fo
 | `data/medium_specific_hard_summary.csv` | Medium-model medium-specific hard-manifest sweep summary. |
 | `figures/source_level_basin_public_map.png` | Basin map showing where source-level decoder-control regions improve, fail, or were not tested. |
 | `notes/upstream_source.md` | Upstream `whisper.cpp` source reference and local commit metadata. |
+| `patches/probe3_whisper_sequence_score.patch` | Clean public patch showing the source-level `whisper_sequence_score` scoring intervention. |
+| `patches/README.md` | Notes explaining the public patch boundary and zero-default behavior. |
 
 ## Upstream source
 
