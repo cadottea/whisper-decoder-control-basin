@@ -1,2 +1,11 @@
 .DS_Store
 *.bak_before_*
+
+# Local plot-audition/debug outputs
+figures/plot_audition/
+figures/plot_audition_one_sheet/
+figures/source_level_basin_3d.png
+figures/source_level_basin_delta_landscape.png
+figures/source_level_basin_heatmaps.png
+figures/source_level_basin_mask.png
+figures/source_level_basin_one_map.png
