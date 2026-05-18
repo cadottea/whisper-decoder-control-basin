@@ -1,0 +1,5 @@
+run,model_tm,train_fold,test_fold,n_train_states,n_test_utts,baseline_errors,selected_errors,oracle_errors,selected_error_delta,oracle_error_delta,reduction_vs_baseline,oracle_reduction,oracle_recovery,improved_utts,worsened_utts,same_utts
+tiny,ggml-tiny.en.bin,0,1,682,154,972,922,831,-50,-141,0.051440329218107,0.14506172839506173,0.3546099290780142,58,32,64
+tiny,ggml-tiny.en.bin,1,0,701,146,928,865,784,-63,-144,0.06788793103448276,0.15517241379310345,0.4375,55,36,55
+base,ggml-base.en.bin,0,1,581,148,771,740,660,-31,-111,0.040207522697795074,0.14396887159533073,0.27927927927927926,49,38,61
+base,ggml-base.en.bin,1,0,570,152,769,755,662,-14,-107,0.018205461638491547,0.13914174252275682,0.1308411214953271,41,36,75

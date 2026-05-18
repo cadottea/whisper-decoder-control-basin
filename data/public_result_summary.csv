@@ -1,0 +1,9 @@
+result_group,model,dataset,baseline_errors,selected_errors,delta_errors,relative_reduction,baseline_wer,selected_wer,runtime_baseline_sec,runtime_selected_sec,note
+heldout_selector,ggml-tiny.en.bin,fold_0_to_1,972,922,-50,0.051440329218107,,,,,"Held-out selector chose candidate states using intrinsic features only; labels were used for training/evaluation, not held-out selection."
+heldout_selector,ggml-tiny.en.bin,fold_1_to_0,928,865,-63,0.0678879310344827,,,,,"Held-out selector chose candidate states using intrinsic features only; labels were used for training/evaluation, not held-out selection."
+heldout_selector,ggml-base.en.bin,fold_0_to_1,771,740,-31,0.040207522697795,,,,,"Held-out selector chose candidate states using intrinsic features only; labels were used for training/evaluation, not held-out selection."
+heldout_selector,ggml-base.en.bin,fold_1_to_0,769,755,-14,0.0182054616384915,,,,,"Held-out selector chose candidate states using intrinsic features only; labels were used for training/evaluation, not held-out selection."
+parameter_basin,small,small_specific_hard_manifest,48,42,-6,0.125,0.0932038834951456,0.0815533980582524,46.02575254440307,46.28684210777283,Best public basin row: probe3_wg-1.5_we-0.8_wl1.2
+parameter_basin,small,tiny_original_hard_manifest,28,25,-3,0.1071428571428571,0.0500894454382826,0.0447227191413237,61.813570737838745,59.50362753868103,Best public basin row: probe3_wg-1.0_we-0.8_wl0.3
+parameter_basin,medium,small_specific_hard_manifest,17,14,-3,0.1764705882352941,0.0574324324324324,0.0472972972972973,93.1483781337738,90.82684659957886,Best public basin row: probe3_wg-0.8_we-0.2_wl1.2
+parameter_basin,medium,tiny_original_hard_manifest,10,10,0,0.0,0.0333333333333333,0.0333333333333333,103.57756304740906,102.03096055984496,Best public basin row: probe3_wg-1.2_we-0.8_wl0.8
