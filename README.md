@@ -28,6 +28,7 @@ Public results included here:
 - Held-out selector results on `ggml-base.en.bin`
 - Parameter-basin sweeps on `ggml-small.en.bin`
 - Parameter-basin transfer sweeps on `ggml-medium.en.bin`
+- Parameter-basin sweeps on `ggml-medium.en.bin` using a medium-specific hard manifest
 
 The repository intentionally includes only aggregate public outputs. It does not include model weights, audio data, private research machinery, or proprietary pipeline details.
 
@@ -74,6 +75,7 @@ This is not a claim that the method is universally optimal, not a replacement fo
 | `data/small_dual_manifest_summary.csv` | Small-model parameter-basin sweep summary. |
 | `data/medium_dual_manifest_summary.csv` | Medium-model transfer sweep summary. |
 | `data/medium_specific_hard_summary.csv` | Medium-model medium-specific hard-manifest sweep summary. |
+| `figures/source_level_basin_public_map.png` | Basin map showing where source-level decoder-control regions improve, fail, or were not tested. |
 | `notes/upstream_source.md` | Upstream `whisper.cpp` source reference and local commit metadata. |
 
 ## Upstream source
